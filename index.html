@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding AI - Standards Alignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .selector-section {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #667eea;
+        }
+
+        .selector-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .state-selector {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-selector:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .standards-display {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .standards-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .standards-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .standards-section {
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .standards-section h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .standard-item {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .standard-code {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .standard-text {
+            margin-top: 5px;
+            color: #555;
+        }
+
+        .course-info {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #667eea;
+        }
+
+        .course-info h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .selector-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Understanding AI: A Conceptual Approach</h1>
+            <p>Standards Alignment Tool for Teachers</p>
+        </div>
+
+        <div class="content">
+            <div class="course-info">
+                <h3>Course Overview</h3>
+                <p><strong>Understanding AI</strong> is a 0.5 credit semester course designed for social science students. Through hands-on experimentation with AI systems, field journal documentation, and critical analysis, students develop AI literacy skills essential for navigating an AI-shaped world. Students investigate how AI works, explore its societal impact, examine bias and fairness in algorithmic systems, and develop effective human-AI collaboration skills—all without writing code or solving complex equations.</p>
+            </div>
+
+            <div class="selector-section">
+                <div class="selector-label">Select your state or standards framework:</div>
+                <select id="stateSelector" class="state-selector">
+                    <option value="">Choose your state...</option>
+                    <option value="c3">C3 Framework (National Social Studies)</option>
+                    <option value="california">California</option>
+                    <option value="texas">Texas</option>
+                    <option value="florida">Florida</option>
+                    <option value="new_york">New York</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="north_carolina">North Carolina</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="washington">Washington</option>
+                </select>
+            </div>
+
+            <div id="standardsDisplay" class="standards-display">
+                <!-- Standards content will be populated here -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Understanding AI: Preparing Students for an AI-Shaped World</p>
+        </div>
+    </div>
+
+    <script>
+        const standardsData = {
+            c3: {
+                title: "C3 Framework - College, Career, and Civic Life (National)",
+                sections: {
+                    "Dimension 2 - Economics": [
+                        {
+                            code: "D2.Eco.1.9-12",
+                            text: "Analyze how incentives influence choices that may result in policies with a range of costs and benefits for different groups."
+                        },
+                        {
+                            code: "D2.Eco.14.9-12",
+                            text: "Analyze how technological innovations have affected economic decision-making and behaviors."
+                        }
+                    ],
+                    "Dimension 2 - Civics": [
+                        {
+                            code: "D2.Civ.10.9-12",
+                            text: "Analyze the impact and the appropriate roles of personal interests and perspectives on the application of civic virtues, democratic principles, constitutional rights, and human rights."
+                        },
+                        {
+                            code: "D2.Civ.14.9-12",
+                            text: "Analyze how a society's systems and institutions (e.g., economic, political, legal) affect individuals and groups."
+                        }
+                    ],
+                    "Dimension 3 - Evaluating Sources": [
+                        {
+                            code: "D3.1.9-12",
+                            text: "Gather relevant information from multiple sources representing a wide range of views while using the origin, authority, structure, context, and corroborative value of the sources to guide the selection."
+                        },
+                        {
+                            code: "D3.3.9-12",
+                            text: "Identify evidence that draws information directly and substantively from multiple sources to detect inconsistencies in evidence in order to revise or strengthen claims."
+                        }
+                    ],
+                    "Dimension 4 - Communicating Conclusions": [
+                        {
+                            code: "D4.1.9-12",
+                            text: "Construct arguments using precise and knowledgeable claims, with evidence from multiple sources, while acknowledging counterclaims and evidentiary weaknesses."
+                        },
+                        {
+                            code: "D4.7.9-12",
+                            text: "Assess options for individual and collective action to address local, regional, and global problems by engaging in self-reflection, strategy identification, and complex causal reasoning."
+                        }
+                    ]
+                }
+            },
+            california: {
+                title: "California Education Standards",
+                sections: {
+                    "Social Studies - Principles of American Democracy": [
+                        {
+                            code: "12.1",
+                            text: "Students explain the fundamental principles and moral values of American democracy as expressed in the U.S. Constitution and other essential documents of American democracy."
+                        },
+                        {
+                            code: "12.10",
+                            text: "Students formulate questions about and defend their analyses of tensions within our constitutional democracy and the importance of maintaining a balance between individual rights and the common good."
+                        }
+                    ],
+                    "CTE - Information and Communication Technologies Sector": [
+                        {
+                            code: "ICT 4.1",
+                            text: "Understand artificial intelligence concepts and identify real-world applications of AI systems."
+                        },
+                        {
+                            code: "ICT 4.2",
+                            text: "Analyze ethical implications of artificial intelligence in society."
+                        },
+                        {
+                            code: "ICT 8.1",
+                            text: "Use critical thinking to make informed decisions and solve problems in technology contexts."
+                        },
+                        {
+                            code: "ICT 9.3",
+                            text: "Demonstrate an understanding of emerging technologies and their applications."
+                        }
+                    ],
+                    "History-Social Science Analysis Skills": [
+                        {
+                            code: "Historical Interpretation 3",
+                            text: "Students interpret past events and issues within the context in which an event unfolded rather than solely in terms of present-day norms and values."
+                        },
+                        {
+                            code: "Historical Interpretation 4",
+                            text: "Students understand the meaning, implication, and impact of historical events and recognize that events could have taken other directions."
+                        }
+                    ]
+                }
+            },
+            texas: {
+                title: "Texas Essential Knowledge and Skills (TEKS)",
+                sections: {
+                    "Social Studies - Sociology": [
+                        {
+                            code: "Soc §113.46(c)(1)",
+                            text: "The student understands the theoretical perspectives used to study human social behavior. The student is expected to differentiate types of societies such as agricultural, industrial, and post-industrial."
+                        },
+                        {
+                            code: "Soc §113.46(c)(13)",
+                            text: "The student understands how social institutions affect the lives of individuals in society. The student is expected to analyze the impact of technology on society."
+                        },
+                        {
+                            code: "Soc §113.46(c)(19)",
+                            text: "The student understands the concept of social change. The student is expected to evaluate the effects of major historical events on social change."
+                        }
+                    ],
+                    "CTE - Information Technology": [
+                        {
+                            code: "IT §130.277(c)(1)(E)",
+                            text: "The student demonstrates professional standards/employability skills as required by business and industry. The student is expected to demonstrate knowledge of technology applications and systems."
+                        },
+                        {
+                            code: "IT §130.277(c)(6)(A)",
+                            text: "The student analyzes the impact of emerging technologies. The student is expected to evaluate the impact of artificial intelligence on society."
+                        },
+                        {
+                            code: "IT §130.277(c)(6)(C)",
+                            text: "The student is expected to analyze ethical and legal issues related to the use of information technology."
+                        }
+                    ],
+                    "Social Studies Skills": [
+                        {
+                            code: "§113.46(c)(20)(A)",
+                            text: "The student applies critical-thinking skills to organize and use information acquired through established research methodologies. The student is expected to analyze information by sequencing, categorizing, identifying cause-and-effect relationships, comparing, contrasting, finding the main idea, summarizing, making generalizations and predictions, and drawing inferences and conclusions."
+                        }
+                    ]
+                }
+            },
+            florida: {
+                title: "Florida Standards",
+                sections: {
+                    "Social Studies - Sociology": [
+                        {
+                            code: "SS.912.S.1.2",
+                            text: "Explain the significance of social institutions in society (e.g., economic, political, legal, kinship, and religious institutions)."
+                        },
+                        {
+                            code: "SS.912.S.4.7",
+                            text: "Discuss the impact of social change on individuals and society."
+                        },
+                        {
+                            code: "SS.912.S.8.7",
+                            text: "Evaluate the impact of recent technological innovations on social change."
+                        }
+                    ],
+                    "CTE - Information Technology": [
+                        {
+                            code: "IT-ITS 1.0",
+                            text: "Demonstrate an understanding of the nature and scope of the Information Technology industry."
+                        },
+                        {
+                            code: "IT-ITS 5.0",
+                            text: "Describe emerging technologies that affect the field of information technology."
+                        },
+                        {
+                            code: "IT-ITS 7.0",
+                            text: "Demonstrate leadership and teamwork skills needed to accomplish team goals and objectives."
+                        }
+                    ],
+                    "Digital Literacy & Computer Science": [
+                        {
+                            code: "CS.912.CS-CS.1.3",
+                            text: "Describe how artificial intelligence drives many software and physical systems."
+                        },
+                        {
+                            code: "CS.912.IC-SI.1.1",
+                            text: "Explain the impacts of computing on societal issues."
+                        }
+                    ]
+                }
+            },
+            new_york: {
+                title: "New York State Standards",
+                sections: {
+                    "Social Studies Framework - Participation in Government": [
+                        {
+                            code: "12.G4a",
+                            text: "Civic engagement includes working individually or collectively to address issues and problems confronting society."
+                        },
+                        {
+                            code: "12.G5a",
+                            text: "Important activities of engaged citizens include staying informed about issues and voting."
+                        }
+                    ],
+                    "Social Studies Practices": [
+                        {
+                            code: "A. Gathering, Using, and Interpreting Evidence",
+                            text: "Students identify, describe, and evaluate evidence about events from diverse sources (including written documents, maps, images, etc.)."
+                        },
+                        {
+                            code: "B. Chronological Reasoning",
+                            text: "Students identify causes and effects of events and developments over time."
+                        },
+                        {
+                            code: "E. Economics and Economic Systems",
+                            text: "Students analyze how technological innovations have affected economic decision-making."
+                        }
+                    ],
+                    "Computer Science & Digital Fluency": [
+                        {
+                            code: "9-12.IC.5",
+                            text: "Describe ways that complex computer systems can be designed for inclusivity and to mitigate unintended consequences."
+                        },
+                        {
+                            code: "9-12.IC.7",
+                            text: "Investigate the use of computer science in multiple fields."
+                        }
+                    ]
+                }
+            },
+            pennsylvania: {
+                title: "Pennsylvania Academic Standards",
+                sections: {
+                    "Civics and Government": [
+                        {
+                            code: "5.1.12.A",
+                            text: "Evaluate the major arguments in support of the system of limited government."
+                        },
+                        {
+                            code: "5.3.12.B",
+                            text: "Examine how power and responsibility are distributed, shared and limited in the government of the United States."
+                        }
+                    ],
+                    "Economics": [
+                        {
+                            code: "6.1.12.C",
+                            text: "Analyze how decisions are made in the marketplace."
+                        },
+                        {
+                            code: "6.4.12.E",
+                            text: "Explain how changes in technology affect businesses and individuals."
+                        }
+                    ],
+                    "Career Education and Work": [
+                        {
+                            code: "13.1.11.A",
+                            text: "Relate careers to individual interests, abilities, and aptitudes."
+                        },
+                        {
+                            code: "13.3.11.C",
+                            text: "Identify and demonstrate literacy, and computational skills necessary to process employment, business, and technology information."
+                        }
+                    ]
+                }
+            },
+            illinois: {
+                title: "Illinois Learning Standards",
+                sections: {
+                    "Social Science": [
+                        {
+                            code: "SS.IS.4.9-12",
+                            text: "Develop claims using evidence from multiple sources to answer essential questions."
+                        },
+                        {
+                            code: "SS.Inq.3.9-12",
+                            text: "Determine the kinds of sources that will be helpful in answering compelling and supporting questions."
+                        },
+                        {
+                            code: "SS.CV.5.9-12",
+                            text: "Evaluate citizens' individual and collective capacities to address social and political problems."
+                        }
+                    ],
+                    "Computer Science": [
+                        {
+                            code: "9-12.IC.SI.1",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        },
+                        {
+                            code: "9-12.IC.C.1",
+                            text: "Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society."
+                        },
+                        {
+                            code: "9-12.IC.SLE.1",
+                            text: "Describe the impact of cybersecurity threats and explain procedures for securing personal and organizational digital information."
+                        }
+                    ],
+                    "Career Development": [
+                        {
+                            code: "CD.2.a",
+                            text: "Develop strategies to make effective decisions throughout one's life."
+                        },
+                        {
+                            code: "CD.3.c",
+                            text: "Investigate how personal interests and skills can be developed to fit career interests."
+                        }
+                    ]
+                }
+            },
+            ohio: {
+                title: "Ohio Learning Standards",
+                sections: {
+                    "Social Studies - Contemporary World Issues": [
+                        {
+                            code: "CWI.1",
+                            text: "The use of primary and secondary sources can help one to analyze contemporary issues and better understand the reasons for them."
+                        },
+                        {
+                            code: "CWI.9",
+                            text: "Technological developments have cultural and economic effects throughout the world."
+                        }
+                    ],
+                    "Social Studies Skills & Methods": [
+                        {
+                            code: "SSM.1",
+                            text: "Historians, geographers, economists, and political scientists conduct research and investigations by developing questions, generating potential sources, gathering relevant information, analyzing multiple perspectives, and drawing conclusions."
+                        },
+                        {
+                            code: "SSM.2",
+                            text: "Historical, geographic, economic, and political information can be presented using appropriate media."
+                        }
+                    ],
+                    "Computer Science": [
+                        {
+                            code: "CS.HS.IC.1",
+                            text: "Evaluate the beneficial and harmful effects computing has had on society."
+                        },
+                        {
+                            code: "CS.HS.IC.2",
+                            text: "Test and refine computational artifacts to reduce bias and equity deficits."
+                        }
+                    ]
+                }
+            },
+            georgia: {
+                title: "Georgia Standards of Excellence",
+                sections: {
+                    "Social Studies - Government/Civics": [
+                        {
+                            code: "SSCG22",
+                            text: "Demonstrate knowledge of the criminal justice system."
+                        },
+                        {
+                            code: "SSCG23",
+                            text: "Demonstrate knowledge of the organization and powers of state and local government described in the Georgia Constitution."
+                        }
+                    ],
+                    "Social Studies - Economics": [
+                        {
+                            code: "SSEF5",
+                            text: "The student will describe the roles of government in a market economy."
+                        },
+                        {
+                            code: "SSEF6",
+                            text: "The student will explain how productivity, economic growth, and future standards of living are influenced by investment in factories, machinery, new technology, and the health, education, and training of people."
+                        }
+                    ],
+                    "Information Technology": [
+                        {
+                            code: "IT-ITS-1",
+                            text: "Students will explore information technology careers, emerging technologies, and pathways."
+                        },
+                        {
+                            code: "IT-WD-5",
+                            text: "Students will evaluate emerging technologies and their impact on society."
+                        }
+                    ]
+                }
+            },
+            north_carolina: {
+                title: "North Carolina Standard Course of Study",
+                sections: {
+                    "Social Studies - Sociology": [
+                        {
+                            code: "SS.SO.1",
+                            text: "Analyze how social structures and institutions affect individual behavior and identity."
+                        },
+                        {
+                            code: "SS.SO.4",
+                            text: "Analyze how social change impacts individuals, institutions, and society."
+                        }
+                    ],
+                    "Social Studies - Civics & Economics": [
+                        {
+                            code: "CE.C&G.1.4",
+                            text: "Analyze the principles and ideals underlying American democracy in terms of how they promote freedom."
+                        },
+                        {
+                            code: "CE.E.1.1",
+                            text: "Analyze how economic choices influence employment opportunities and standards of living."
+                        }
+                    ],
+                    "Computer Science": [
+                        {
+                            code: "CS.IC.9-12.1",
+                            text: "Evaluate the beneficial and harmful effects that computational artifacts and innovations have on society, economy, and culture."
+                        },
+                        {
+                            code: "CS.IC.9-12.2",
+                            text: "Evaluate the impact of equity, access, and influence on the distribution of computing resources in a global society."
+                        }
+                    ]
+                }
+            },
+            michigan: {
+                title: "Michigan Academic Standards",
+                sections: {
+                    "Social Studies - Inquiry": [
+                        {
+                            code: "P1.1",
+                            text: "Deeply explore a range of informed perspectives on an issue or question to develop and refine questions for further investigation."
+                        },
+                        {
+                            code: "P3.1",
+                            text: "Identify evidence that draws information from multiple perspectives and sources in response to compelling and supporting questions."
+                        },
+                        {
+                            code: "P4.2",
+                            text: "Construct arguments using claims and evidence from multiple sources, while acknowledging the strengths and limitations of the arguments."
+                        }
+                    ],
+                    "Social Studies - Public Discourse": [
+                        {
+                            code: "6.P4.1",
+                            text: "Engage in discussions that advocate for a position while recognizing and applying the perspectives of others."
+                        },
+                        {
+                            code: "6.P4.2",
+                            text: "Critique arguments related to issues and problems of the discipline with credible evidence."
+                        }
+                    ],
+                    "Computer Science": [
+                        {
+                            code: "HS.IC.SI.1",
+                            text: "Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices."
+                        },
+                        {
+                            code: "HS.IC.C.1",
+                            text: "Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society."
+                        }
+                    ]
+                }
+            },
+            washington: {
+                title: "Washington State Learning Standards",
+                sections: {
+                    "Social Studies - Civics": [
+                        {
+                            code: "SSS1.9-12.1",
+                            text: "Analyze and evaluate how issues and historical events are shaped by unique circumstances of time and place as well as broader historical contexts."
+                        },
+                        {
+                            code: "SSS5.9-12.2",
+                            text: "Analyze how individuals take action and advocate for change to address issues and problems in communities and systems."
+                        }
+                    ],
+                    "Social Studies - Economics": [
+                        {
+                            code: "SSS2.9-12.2",
+                            text: "Analyze how factors such as economic changes, technological innovations, environmental changes, and government action shape social and economic opportunities."
+                        }
+                    ],
+                    "Computer Science": [
+                        {
+                            code: "9-12.IC.SI.01",
+                            text: "Evaluate computational artifacts with regard to improving their beneficial effects and reducing harmful effects on society."
+                        },
+                        {
+                            code: "9-12.IC.C.01",
+                            text: "Evaluate the ways computing innovations impact culture, society, and individuals."
+                        }
+                    ],
+                    "Career and Technical Education": [
+                        {
+                            code: "CTE.IT.9-12.1",
+                            text: "Demonstrate awareness of emerging technologies and evaluate the potential impact on industries and society."
+                        }
+                    ]
+                }
+            }
+        };
+
+        document.getElementById('stateSelector').addEventListener('change', function() {
+            const selectedState = this.value;
+            const displayDiv = document.getElementById('standardsDisplay');
+            
+            if (selectedState && standardsData[selectedState]) {
+                displayStandards(selectedState);
+                displayDiv.style.display = 'block';
+            } else {
+                displayDiv.style.display = 'none';
+            }
+        });
+
+        function displayStandards(state) {
+            const data = standardsData[state];
+            const displayDiv = document.getElementById('standardsDisplay');
+            
+            let html = `
+                <div class="standards-header">
+                    <h2>${data.title}</h2>
+                    <p>Standards addressed by Understanding AI course</p>
+                </div>
+            `;
+            
+            for (const [sectionName, standards] of Object.entries(data.sections)) {
+                html += `
+                    <div class="standards-section">
+                        <h3>${sectionName}</h3>
+                `;
+                
+                standards.forEach(standard => {
+                    html += `
+                        <div class="standard-item">
+                            <div class="standard-code">${standard.code}</div>
+                            <div class="standard-text">${standard.text}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            }
+            
+            displayDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
